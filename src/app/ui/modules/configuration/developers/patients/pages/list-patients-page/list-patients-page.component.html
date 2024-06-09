@@ -1,0 +1,37 @@
+<div class="w-full lg:ps-2">
+  <nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 lg:px-8 py-8" aria-label="Global">
+    <div class="me-5 md:me-8">
+      <a class="flex-none text-xl font-semibold text-slate-700"  aria-label="Brand">PACIENTES</a>
+    </div>
+  </nav>
+
+  <!-- Table Section -->
+<div class="max-w-[85rem] px-4 py-0 sm:px-6 lg:px-8 lg:py-0 mx-auto">
+  <!-- Card -->
+  <div class="flex flex-col">
+    <div class="-m-1.5 overflow-x-auto">
+      <div class="p-1.5 min-w-full inline-block align-middle">
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-neutral-900 dark:border-neutral-700">
+          <!-- Header -->
+          <app-header-list-patients (btnSearchPatientName)="searchPatients($event)"/>
+          <!-- End Header -->
+
+          <!-- Table -->
+          @if (userRole.toUpperCase() == 'DEVELOPER'.toUpperCase()) {
+            <app-table-list-patients-developer [patientsListDeveloper]="patientsList$"/>
+           } @else {
+            <app-table-list-patients-users [patientsListUsers]="patientsList$" />
+           }
+          <!-- End Table -->
+
+          <!-- Footer -->
+          <app-footer-list-patients />
+          <!-- End Footer -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Card -->
+</div>
+<!-- End Table Section -->
+</div>
