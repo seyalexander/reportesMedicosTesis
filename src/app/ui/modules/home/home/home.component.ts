@@ -29,6 +29,9 @@ export class HomeComponent {
   ngOnInit(): void {
     this.validationLogin()
 
+  }
+
+  opcionesDeveloper() {
     this.mainMenu.defaultOptions = [
       {
         name: 'Dashboard',
@@ -88,7 +91,50 @@ export class HomeComponent {
         route: ['/', 'home', 'autos'],
       },
     ]
+  }
 
+  opcionesUser() {
+    this.mainMenu.defaultOptions = [
+      {
+        name: 'Dashboard',
+        icon: 'uil uil-estate',
+        route: ['/', 'home'],
+      },
+    ];
+
+    this.mainMenu.accessDropwonsLink = [
+      {
+        name: 'Reportes',
+        options: [
+          {
+            name: 'Triaje',
+            route: ['/', 'home'],
+          },
+          {
+            name: 'Atención integral del niño(a) de 5 a 9 años',
+            route: ['/', 'home'],
+          },
+          {
+            name: 'Atención integral del niño(a) de 5 a 9 años',
+            route: ['/', 'home'],
+          },
+
+        ]
+      }
+    ]
+
+    this.mainMenu.accessLink = [
+      {
+        name: ['Cuentas'],
+        icon: 'uil uil-document-info',
+        route: ['/', 'home', 'autos'],
+      },
+      {
+        name: ['Calendar'],
+        icon: 'uil uil-document-info',
+        route: ['/', 'home', 'autos'],
+      },
+    ]
   }
 
 
@@ -110,6 +156,11 @@ export class HomeComponent {
           this.loginService.currentUserRole.subscribe({
             next: (userRol) => {
               this.userRole = userRol;
+              if(this.userRole==='DEVELOPER') {
+                this.opcionesDeveloper()
+              }else if(this.userRole==='PERSONAL') {
+                this.opcionesUser()
+              }
             }
           });
           this.loginService.currentUserIdEmpleado.subscribe({

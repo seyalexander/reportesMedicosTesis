@@ -15,6 +15,7 @@ export class AuthService {
   currentUserIdClient: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   currentUserIdEmpleado: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   currentUserRole: BehaviorSubject<String> = new BehaviorSubject<String>("");
+  private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
 
   constructor(private http: HttpClient) {
     const token = sessionStorage.getItem("jwt");
@@ -49,6 +50,7 @@ export class AuthService {
         sessionStorage.setItem("jwt", userData.jwt);
         sessionStorage.setItem("role",userData.role);
         sessionStorage.setItem("username",userData.username);
+        this.loggedIn.next(true);
         this.currentUserData.next(userData.jwt);
         this.currentUserIdClient.next(userData.cliente);
         this.currentUserIdEmpleado.next(userData.empleado)
@@ -70,11 +72,11 @@ export class AuthService {
     this.currentUserIdClient.next(0);
     this.currentUserNombre.next("");
     this.currentUserLoginOn.next(false);
-    console.log("Logout completed. Current state:");
-    console.log("currentUserData:", this.currentUserData.value);
-    console.log("currentUserIdClient:", this.currentUserIdClient.value);
-    console.log("currentUserNombre:", this.currentUserNombre.value);
-    console.log("currentUserLoginOn:", this.currentUserLoginOn.value);
+    this.loggedIn.next(false);
+  }
+
+  private hasToken(): boolean {
+    return !!sessionStorage.getItem('jwt'); // O la lógica que uses para guardar el token
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -97,10 +99,6 @@ export class AuthService {
 
   get useRole(): String {
     return this.currentUserRole.value;
-  }
-
-  get userLoginOn(): Observable<boolean> {
-    return this.currentUserLoginOn.asObservable();
   }
 
   get userToken(): String {

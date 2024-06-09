@@ -37,6 +37,7 @@ export class ListPatientsPageComponent {
   private router= inject(Router);
 
   ngOnInit(): void {
+
     this.validationLogin()
   }
 
@@ -115,6 +116,10 @@ export class ListPatientsPageComponent {
       .subscribe((response: patientsResponseModel[])=> {
         this.patientsList$ = response
       })
+  }
+
+  reload() {
+    window.location.reload()
   }
 
   //================================================================

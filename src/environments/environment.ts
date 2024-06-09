@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiProduction: 'http://192.168.100.254:8080/Reportes'
+  //api: 'http://192.168.100.254:8080/Reportes'
+  api: 'https://reportesmedicoshuaranchal.uc.r.appspot.com/Reportes'
 };
