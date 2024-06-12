@@ -63,12 +63,16 @@ export class HomeComponent {
         name: 'Reportes',
         options: [
           {
+            name: 'Pacientes',
+            route: ['/','home', 'patients'],
+          },
+          {
             name: 'Triaje',
-            route: ['/', 'home'],
+            route: ['/', 'home', 'triage'],
           },
           {
             name: 'Atención integral del niño(a) de 5 a 9 años',
-            route: ['/', 'home'],
+            route: ['/','home', 'atencionIntegralNinios'],
           },
           {
             name: 'Atención integral del niño(a) de 5 a 9 años',
@@ -112,7 +116,7 @@ export class HomeComponent {
           },
           {
             name: 'Atención integral del niño(a) de 5 a 9 años',
-            route: ['/', 'home'],
+            route: ['/','home', 'atencionIntegralNinios'],
           },
           {
             name: 'Atención integral del niño(a) de 5 a 9 años',
@@ -150,31 +154,10 @@ export class HomeComponent {
     this.loginService.currentUserLoginOn.subscribe({
       next: (userLoginOn) => {
         this.userLoginOn = userLoginOn;
-        console.log(userLoginOn);
-
         if (this.userLoginOn) {
-          this.loginService.currentUserRole.subscribe({
-            next: (userRol) => {
-              this.userRole = userRol;
-              if(this.userRole==='DEVELOPER') {
-                this.opcionesDeveloper()
-              }else if(this.userRole==='PERSONAL') {
-                this.opcionesUser()
-              }
-            }
-          });
-          this.loginService.currentUserIdEmpleado.subscribe({
-            next: (userLoginId) => {
-              this.userLoginId = userLoginId;
-            }
-          });
-          this.loginService.currentUserNombre.subscribe({
-            next: (userNombre) => {
-              this.userNombre = userNombre
-              console.log("nombre desde home: ", userNombre);
-
-            }
-          })
+          this.obtenerRolUsuario()
+          this.obtenerIdEmpleado()
+          this.obtenerNombreUsuario()
         } else {
           this.userLoginId = 0;
           this.userNombre = '';
@@ -184,6 +167,35 @@ export class HomeComponent {
         }
       }
     });
+  }
+
+  obtenerRolUsuario() {
+    this.loginService.currentUserRole.subscribe({
+      next: (userRol) => {
+        this.userRole = userRol;
+        if(this.userRole==='DEVELOPER') {
+          this.opcionesDeveloper()
+        }else if(this.userRole==='PERSONAL') {
+          this.opcionesUser()
+        }
+      }
+    });
+  }
+
+  obtenerIdEmpleado() {
+    this.loginService.currentUserIdEmpleado.subscribe({
+      next: (userLoginId) => {
+        this.userLoginId = userLoginId;
+      }
+    });
+  }
+
+  obtenerNombreUsuario() {
+    this.loginService.currentUserNombre.subscribe({
+      next: (userNombre) => {
+        this.userNombre = userNombre
+      }
+    })
   }
 
   salir() {

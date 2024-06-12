@@ -9,6 +9,8 @@ import { ClienteInterceptorService } from './infraestructure/core/interceptores/
 import { patientsGateway } from './domain/model/patients/gateway/patients-gateway';
 import { PatientsApiService } from './infraestructure/driven-adapter/patients/default/patients-api.service';
 import { PatientsApiUsersService } from './infraestructure/driven-adapter/patients/users/patients-api-users.service';
+import { triageGateway } from './domain/model/triage/gateway/triage-gateway';
+import { TriageApiService } from './infraestructure/driven-adapter/triage/default/triage-api.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +19,7 @@ export const appConfig: ApplicationConfig = {
     //Patients
     { provide: patientsGateway, useClass: PatientsApiService },
     { provide: patientsGateway, useClass: PatientsApiUsersService },
+    { provide: triageGateway, useClass: TriageApiService },
     {provide:HTTP_INTERCEPTORS,useClass:ClienteInterceptorService,multi:true},
     {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptorService,multi:true},
     provideHttpClient(withInterceptorsFromDi())
