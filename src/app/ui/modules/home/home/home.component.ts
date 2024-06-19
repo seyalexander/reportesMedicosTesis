@@ -67,7 +67,7 @@ export class HomeComponent {
             route: ['/','home', 'patients'],
           },
           {
-            name: 'Triaje',
+            name: 'Triage',
             route: ['/', 'home', 'triage'],
           },
           {
@@ -75,7 +75,7 @@ export class HomeComponent {
             route: ['/','home', 'atencionIntegralNinios'],
           },
           {
-            name: 'Atención integral del niño(a) de 5 a 9 años',
+            name: 'Atención del adulto mayor hombre y mujer',
             route: ['/', 'home'],
           },
 
@@ -111,15 +111,15 @@ export class HomeComponent {
         name: 'Reportes',
         options: [
           {
-            name: 'Triaje',
-            route: ['/', 'home'],
+            name: 'Triage',
+            route: ['/', 'home', 'triage'],
           },
           {
             name: 'Atención integral del niño(a) de 5 a 9 años',
             route: ['/','home', 'atencionIntegralNinios'],
           },
           {
-            name: 'Atención integral del niño(a) de 5 a 9 años',
+            name: 'Atención del adulto mayor hombre y mujer',
             route: ['/', 'home'],
           },
 

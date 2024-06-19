@@ -2,26 +2,19 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-header-lista-triage',
+  selector: 'app-search-paciente',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './header-lista-triage.component.html',
-  styleUrl: './header-lista-triage.component.css'
+  templateUrl: './search-paciente.component.html',
+  styleUrl: './search-paciente.component.css'
 })
-export class HeaderListaTriageComponent {
+export class SearchPacienteComponent {
   namePatient = new FormControl('', {
     nonNullable: true,
     validators: [
      Validators.required
     ]
   })
-
-  @Output() cerrarComponenteEvent = new EventEmitter<void>();
-  cerrarComponente(): void {
-    this.cerrarComponenteEvent.emit();
-  }
-
-
 
   validacionDatos() {
     if (this.namePatient.valid && this.namePatient.value.trim()) {
@@ -31,9 +24,6 @@ export class HeaderListaTriageComponent {
     }
   }
 
-   //================================================================
-  // RESET
-  //================================================================
   reload() {
     window.location.reload()
   }

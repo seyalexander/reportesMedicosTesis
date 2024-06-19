@@ -96,12 +96,17 @@ export class ListPatientsPageComponent {
   private patientsSubscriptionUsers: Subscription | undefined;
 
   listPatientsUser() {
-    this.patientsSubscriptionUsers = this._patientsServiceUsers
+    try {
+      this.patientsSubscriptionUsers = this._patientsServiceUsers
       .getAllPatients().subscribe((patients: patientsResponseModel[]) => {
         this.patientsList$ = patients
-        console.log(patients);
-
       })
+    }catch(error) {
+      console.log(error);
+
+    }
+
+
   }
 
   //================================================================

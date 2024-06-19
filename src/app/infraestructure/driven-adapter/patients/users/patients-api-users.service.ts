@@ -36,6 +36,10 @@ export class PatientsApiUsersService extends patientsGateway{
     return this.httpClient.get<patientsResponseModel[]>(`${this.URL}/BuscarPacientePorNombre/${name}`)
   }
 
+  override getById(id: number): Observable<Array<patientsResponseModel>> {
+    return this.httpClient.get<patientsResponseModel[]>(`${this.URL}/BuscarPacientePorNombre/${id}`)
+  }
+
   constructor(private httpClient: HttpClient) {
     super();
   }

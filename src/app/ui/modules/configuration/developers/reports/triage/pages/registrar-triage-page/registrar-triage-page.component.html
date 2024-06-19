@@ -1,1 +1,165 @@
-<p>registrar-triage-page works!</p>
+<!-- Card Section -->
+<div
+  class="fixed inset-0 overflow-auto scroll no-scrollbar z-10 max-w-2xl px-4 sm:px-6 lg:px-8 lg:py-14 my-8 mx-auto"
+>
+  <!-- Card -->
+  <div class="bg-white rounded-xl shadow p-4 sm:p-7">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-800">
+        REGISTRO TRIAGE
+      </h2>
+      <p class="text-sm text-gray-600">
+        Ingrese la información correspondiente para el registro de su solicitud
+      </p>
+    </div>
+
+    <form>
+      <app-search-paciente (btnSearchPatientName)="searchPatients($event)" />
+      <app-detalle-paciente [detallePaciente]="patientsList$" />
+
+      <!-- Section -->
+      <div
+        class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200"
+      >
+        <label
+          for="af-payment-billing-contact"
+          class="inline-block text-sm font-medium"
+        >
+          Triaje
+        </label>
+        <div class="mt-2 space-y-3 flex">
+          <input
+            id="af-payment-billing-contact"
+            formControlName="tipo_Consulta"
+            type="text"
+            class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+            placeholder="Id"
+          />
+          <input
+            formControlName="descripcion"
+            type="text"
+            class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+            placeholder="Ingresar Edad"
+          />
+        </div>
+
+        <div class="mt-2 space-y-3 flex">
+          <input
+            id="af-payment-billing-contact"
+            formControlName="tipo_Consulta"
+            type="text"
+            class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+            placeholder="Ingresar Peso"
+          />
+          <input
+            formControlName="descripcion"
+            type="text"
+            class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+            placeholder="Ingresar Talla"
+          />
+        </div>
+        <div class="mt-2 space-y-3 flex">
+          <input
+            formControlName="descripcion"
+            type="text"
+            class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+            placeholder="Ingresar T° C"
+          />
+          <input
+            id="af-payment-billing-contact"
+            formControlName="tipo_Consulta"
+            type="text"
+            class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+            placeholder="Ingresar FR"
+          />
+        </div>
+        <div class="mt-2 space-y-3 flex">
+          <input
+            formControlName="descripcion"
+            type="text"
+            class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+            placeholder="Ingresar pulso"
+          />
+          <input
+            formControlName="descripcion"
+            type="text"
+            class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+            placeholder="Ingresar PC"
+          />
+        </div>
+      </div>
+      <!-- End Section -->
+
+      <div class="mt-2 space-y-3">
+        <label
+          for="af-payment-billing-address"
+          class="inline-block text-sm font-medium"
+        >
+          Opciones
+        </label>
+
+        <div class="grid sm:grid-cols-2 gap-2">
+          <label for="hs-checkbox-in-form" class="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checkbox-in-form">
+            <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">No puede beber líquidos</span>
+          </label>
+
+          <label for="hs-checkbox-checked-in-form" class="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checkbox-checked-in-form" checked="">
+            <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Convulsiones</span>
+          </label>
+          <label for="hs-checkbox-checked-in-form" class="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checkbox-checked-in-form" checked="">
+            <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Anormalment soniolento</span>
+          </label>
+          <label for="hs-checkbox-checked-in-form" class="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checkbox-checked-in-form" checked="">
+            <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Traumatismo, quemaduras</span>
+          </label>
+          <label for="hs-checkbox-checked-in-form" class="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checkbox-checked-in-form" checked="">
+            <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Envenenamiento</span>
+          </label>
+          <label for="hs-checkbox-checked-in-form" class="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checkbox-checked-in-form" checked="">
+            <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Fiebre</span>
+          </label>
+          <label for="hs-checkbox-checked-in-form" class="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checkbox-checked-in-form" checked="">
+            <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Dificultad respiratoria</span>
+          </label>
+          <label for="hs-checkbox-checked-in-form" class="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checkbox-checked-in-form" checked="">
+            <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400"> Sibilancias</span>
+          </label>
+          <input
+            formControlName="descripcion"
+            type="text"
+            class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+            placeholder="Otros"
+          />
+        </div>
+
+      </div>
+
+      <div class="mt-5 flex justify-end gap-x-2">
+        <button
+          (click)="cerrarComponente()"
+          type="button"
+          class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+        >
+          Cancel
+        </button>
+        <button
+          role="button"
+          class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+        >
+          Guardar
+        </button>
+      </div>
+      <!-- End Section -->
+    </form>
+  </div>
+  <!-- End Card -->
+</div>
+<!-- End Card Section -->

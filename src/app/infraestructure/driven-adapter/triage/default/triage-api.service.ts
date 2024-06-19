@@ -16,6 +16,10 @@ export class TriageApiService extends triageGateway{
     return this.httpClient.get<triageModel[]>(`${this.URL}/MostrarTriaje`)
   }
 
+  override getById(id: number): Observable<triageModel> {
+    return this.httpClient.get<triageModel>(`${this.URL}/BuscarCliente/${id}`)
+  }
+
   constructor(private httpClient: HttpClient) {
     super();
   }

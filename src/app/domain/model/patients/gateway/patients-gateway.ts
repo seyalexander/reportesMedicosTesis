@@ -6,4 +6,5 @@ export abstract class patientsGateway {
   abstract getAllPatients(): Observable<Array<patientsResponseModel>>;
   abstract newPatients(patientsRequestModel: patientsRequestModel): Observable<object>
   abstract getByName(name: string): Observable<Array<patientsResponseModel>>
+  abstract getById(id: number): Observable<Array<patientsResponseModel>>
 }

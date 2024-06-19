@@ -35,7 +35,7 @@
               <p
                 class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500"
               >
-                Total users
+                Total pacientes
               </p>
               <div class="hs-tooltip">
                 <div class="hs-tooltip-toggle">
@@ -59,7 +59,7 @@
                     class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700"
                     role="tooltip"
                   >
-                    The number of daily users
+                    Cantidad de pacientes registrados
                   </span>
                 </div>
               </div>
@@ -68,7 +68,7 @@
               <h3
                 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200"
               >
-                72,540
+                {{patientsList$.length}}
               </h3>
               <span
                 class="inline-flex items-center gap-x-1 py-0.5 px-2 rounded-full bg-green-100 text-green-900 dark:bg-green-800 dark:text-green-100"
@@ -88,7 +88,7 @@
                   <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
                   <polyline points="16 7 22 7 22 13" />
                 </svg>
-                <span class="inline-block text-xs font-medium"> 12.5% </span>
+                <span class="inline-block text-xs font-medium">  {{patientsList$.length}}+</span>
               </span>
             </div>
           </div>
@@ -132,14 +132,14 @@
               <p
                 class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500"
               >
-                Sessions
+                REPORTES TRIAJE
               </p>
             </div>
             <div class="mt-1 flex items-center gap-x-2">
               <h3
                 class="text-xl font-medium text-gray-800 dark:text-neutral-200"
               >
-                29.4%
+                {{ triageList$.length }}
               </h3>
             </div>
           </div>
@@ -179,35 +179,16 @@
               <p
                 class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500"
               >
-                Avg. Click Rate
+                PACIENTES ATENDIDOS
               </p>
             </div>
             <div class="mt-1 flex items-center gap-x-2">
               <h3
                 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200"
               >
-                56.8%
+              {{patientsList$.length}}
               </h3>
-              <span
-                class="inline-flex items-center gap-x-1 py-0.5 px-2 rounded-full bg-red-100 text-red-900 dark:bg-red-800 dark:text-red-100"
-              >
-                <svg
-                  class="inline-block size-4 self-center"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
-                  <polyline points="16 17 22 17 22 11" />
-                </svg>
-                <span class="inline-block text-xs font-medium"> 1.7% </span>
-              </span>
+
             </div>
           </div>
         </div>
@@ -248,7 +229,7 @@
               <p
                 class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500"
               >
-                Pageviews
+                REPORTES REGISTRADOS EN TOTAL
               </p>
               <div class="hs-tooltip">
                 <div class="hs-tooltip-toggle">
@@ -272,7 +253,7 @@
                     class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700"
                     role="tooltip"
                   >
-                    The average pageviews
+                    Reportes registrados en total
                   </span>
                 </div>
               </div>
@@ -281,7 +262,7 @@
               <h3
                 class="text-xl font-medium text-gray-800 dark:text-neutral-200"
               >
-                92,913
+              {{ triageList$.length }}
               </h3>
             </div>
           </div>

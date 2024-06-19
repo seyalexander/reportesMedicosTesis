@@ -31,22 +31,15 @@ export class AuthService {
     if (token) {
       this.currentUserLoginOn.next(true);
       this.currentUserData.next(token);
-      if (empleadoId) {
-        this.currentUserIdEmpleado.next(Number(empleadoId));
-      }
-      if (role) {
-        this.currentUserRole.next(String(role));
-      }
-      if (userNombre) {
-        this.currentUserNombre.next(userNombre);
-      }
+      if (empleadoId) { this.currentUserIdEmpleado.next(Number(empleadoId)); }
+      if (role) { this.currentUserRole.next(String(role)); }
+      if (userNombre) { this.currentUserNombre.next(userNombre); }
     }
   }
 
   login(credentials: LoginRequest): Observable<any> {
     return this.http.post<any>(environment.api + "/Login", credentials).pipe(
       tap((userData) => {
-        console.log("SERVICIO LOGIN:", userData);
         sessionStorage.setItem("jwt", userData.jwt);
         sessionStorage.setItem("role",userData.role);
         sessionStorage.setItem("username",userData.username);
@@ -57,7 +50,6 @@ export class AuthService {
         this.currentUserNombre.next(userData.username);
         this.currentUserLoginOn.next(true);
         this.currentUserRole.next(userData.role)
-        console.log("SERVICIO LOGIN:", userData.role);
       }),
       map((userData) => userData.token),
       catchError(this.handleError)
@@ -75,33 +67,16 @@ export class AuthService {
     this.loggedIn.next(false);
   }
 
-  private hasToken(): boolean {
-    return !!sessionStorage.getItem('jwt'); // O la lógica que uses para guardar el token
-  }
+  private hasToken(): boolean { return !!sessionStorage.getItem('jwt'); }
 
   private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      console.error('Se ha producio un error ', error.error);
-    }
-    else {
-      console.error('Backend retornó el código de estado ', error);
-    }
+    if (error.status === 0) { console.error('Se ha producio un error ', error.error); }
+    else { console.error('Backend retornó el código de estado ', error); }
     return throwError(() => new Error('Algo falló. Por favor intente nuevamente.'));
   }
 
-  get userData(): Observable<String> {
-    return this.currentUserData.asObservable();
-  }
-
-  get userRole(): Observable<String> {
-    return this.currentUserRole.asObservable();
-  }
-
-  get useRole(): String {
-    return this.currentUserRole.value;
-  }
-
-  get userToken(): String {
-    return this.currentUserData.value;
-  }
+  get userData(): Observable<String> { return this.currentUserData.asObservable(); }
+  get userRole(): Observable<String> { return this.currentUserRole.asObservable(); }
+  get useRole(): String { return this.currentUserRole.value; }
+  get userToken(): String { return this.currentUserData.value; }
 }

@@ -7,13 +7,18 @@ import { TriageApiService } from '../../../../../../../../infraestructure/driven
 import { triageModel } from '../../../../../../../../domain/model/triage/triage.mode';
 import { Subscription } from 'rxjs';
 import { mensajeValidacionRegistroCorrecto } from '../../../../../../../../infraestructure/helpers/alerts/SweetAlert/SweetAlert.helper';
+import { HeaderListaTriageComponent } from '../../components/header/header-lista-triage/header-lista-triage.component';
+import { RegistrarTriagePageComponent } from '../registrar-triage-page/registrar-triage-page.component';
+import { DetalleReporteTriajeComponent } from '../../components/detalle-reporte-triaje/detalle-reporte-triaje.component';
 
 @Component({
   selector: 'app-lista-triage-page',
   standalone: true,
   imports: [
-    HeaderListPatientsComponent,
-    TableListaTriageDeveloperComponent
+    HeaderListaTriageComponent,
+    TableListaTriageDeveloperComponent,
+    RegistrarTriagePageComponent,
+    DetalleReporteTriajeComponent
   ],
   templateUrl: './lista-triage-page.component.html',
   styleUrl: './lista-triage-page.component.css'
@@ -45,7 +50,6 @@ validationLogin() {
         this.loginService.currentUserRole.subscribe({
           next: (userRol) => {
             this.userRole = userRol;
-            console.log(this.userRole);
             this.listPatientsDeveloper()
           }
         });
@@ -78,10 +82,19 @@ validationLogin() {
     this.triageSubscription = this._triageService
       .getAllTriage().subscribe((triage: triageModel[]) => {
         this.triageList$ = triage
-        console.log("TRIAGE",triage);
-
       })
   }
+
+  showRegistro: boolean = false;
+  mostrarComponente(): void {
+    this.showRegistro = !this.showRegistro;
+  }
+
+  showDetalle: boolean = false;
+  mostrarComponenteDetalle(): void {
+    this.showDetalle = !this.showDetalle;
+  }
+
 
 
 

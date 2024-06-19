@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { triageModel } from '../../../../../../../../../domain/model/triage/triage.mode';
 
 @Component({
@@ -10,4 +10,11 @@ import { triageModel } from '../../../../../../../../../domain/model/triage/tria
 })
 export class TableListaTriageDeveloperComponent {
   @Input() triageListDeveloper: Array<triageModel> = []
+
+  @Output() cerrarUpdateComponenteEvent = new EventEmitter<void>();
+  cerrarUpdateComponente() {
+    this.cerrarUpdateComponenteEvent.emit();
+  }
+
+
 }
